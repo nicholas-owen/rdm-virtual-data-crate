@@ -9,7 +9,14 @@ const Explorer: React.FC = () => {
     const [isDragging, setIsDragging] = useState(false);
     const [isRenameModalOpen, setIsRenameModalOpen] = useState(false);
 
-    const currentFolderNodes = nodes.filter((n) => n.parentId === currentFolderId);
+    const currentFolderNodes = nodes
+        .filter((n) => n.parentId === currentFolderId)
+        .sort((a, b) => {
+            if (a.type === b.type) {
+                return a.name.localeCompare(b.name);
+            }
+            return a.type === 'folder' ? -1 : 1;
+        });
     const path = getPath(currentFolderId);
     const selectedNode = nodes.find(n => n.id === selectedNodeId);
 

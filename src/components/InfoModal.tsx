@@ -26,7 +26,7 @@ const InfoModal: React.FC<InfoModalProps> = ({ isOpen, onClose, content }) => {
             backdropFilter: 'blur(4px)'
         }}>
             <div style={{
-                backgroundColor: '#1e293b',
+                backgroundColor: 'var(--sidebar-bg)',
                 borderRadius: '8px',
                 padding: '24px',
                 width: '600px',
@@ -67,8 +67,8 @@ const InfoModal: React.FC<InfoModalProps> = ({ isOpen, onClose, content }) => {
                     .markdown-content li { margin-bottom: 0.25em; }
                     .markdown-content strong { font-weight: bold; color: var(--accent-color); }
                     .markdown-content em { font-style: italic; }
-                    .markdown-content code { background-color: rgba(0,0,0,0.3); padding: 2px 4px; borderRadius: 4px; font-family: monospace; }
-                    .markdown-content pre { background-color: rgba(0,0,0,0.3); padding: 12px; borderRadius: 6px; overflow-x: auto; margin-bottom: 1em; }
+                    .markdown-content code { background-color: var(--item-hover); padding: 2px 4px; borderRadius: 4px; font-family: monospace; color: var(--text-primary); }
+                    .markdown-content pre { background-color: var(--item-hover); padding: 12px; borderRadius: 6px; overflow-x: auto; margin-bottom: 1em; color: var(--text-primary); }
                     .markdown-content a { color: var(--accent-color); text-decoration: none; }
                     .markdown-content a:hover { text-decoration: underline; }
                 `}</style>
