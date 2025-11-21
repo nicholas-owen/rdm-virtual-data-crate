@@ -1,5 +1,6 @@
 import React from 'react';
 import { X } from 'lucide-react';
+import ReactMarkdown from 'react-markdown';
 
 interface InfoModalProps {
     isOpen: boolean;
@@ -53,10 +54,24 @@ const InfoModal: React.FC<InfoModalProps> = ({ isOpen, onClose, content }) => {
                 </button>
 
                 <div style={{ color: 'var(--text-primary)', lineHeight: '1.6' }}>
-                    <div style={{ whiteSpace: 'pre-wrap', fontFamily: 'inherit' }}>
-                        {content}
+                    <div className="markdown-content">
+                        <ReactMarkdown>{content}</ReactMarkdown>
                     </div>
                 </div>
+                <style>{`
+                    .markdown-content h1 { font-size: 1.5em; font-weight: bold; margin-bottom: 0.5em; color: var(--text-primary); }
+                    .markdown-content h2 { font-size: 1.3em; font-weight: bold; margin-top: 1em; margin-bottom: 0.5em; color: var(--text-primary); }
+                    .markdown-content h3 { font-size: 1.1em; font-weight: bold; margin-top: 1em; margin-bottom: 0.5em; color: var(--text-primary); }
+                    .markdown-content p { margin-bottom: 1em; }
+                    .markdown-content ul, .markdown-content ol { margin-bottom: 1em; padding-left: 1.5em; }
+                    .markdown-content li { margin-bottom: 0.25em; }
+                    .markdown-content strong { font-weight: bold; color: var(--accent-color); }
+                    .markdown-content em { font-style: italic; }
+                    .markdown-content code { background-color: rgba(0,0,0,0.3); padding: 2px 4px; borderRadius: 4px; font-family: monospace; }
+                    .markdown-content pre { background-color: rgba(0,0,0,0.3); padding: 12px; borderRadius: 6px; overflow-x: auto; margin-bottom: 1em; }
+                    .markdown-content a { color: var(--accent-color); text-decoration: none; }
+                    .markdown-content a:hover { text-decoration: underline; }
+                `}</style>
             </div>
         </div>
     );

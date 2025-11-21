@@ -2,7 +2,12 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import type { FileSystemNode, FileSystemContextType } from '../types/filesystem';
 
-const FileSystemContext = createContext<FileSystemContextType | undefined>(undefined);
+// Extend the context type to include resetFileSystem
+interface ExtendedFileSystemContextType extends FileSystemContextType {
+    resetFileSystem: () => void;
+}
+
+const FileSystemContext = createContext<ExtendedFileSystemContextType | undefined>(undefined);
 
 import csvData from '../assets/filenames_org.csv?raw';
 
@@ -56,7 +61,7 @@ const initialNodes: FileSystemNode[] = parseCSV(csvData);
 
 export const FileSystemProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     const [nodes, setNodes] = useState<FileSystemNode[]>(() => {
-        const saved = localStorage.getItem('virtual-fs-nodes-v2');
+        const saved = localStorage.getItem('virtual-fs-nodes-v3');
         return saved ? JSON.parse(saved) : initialNodes;
     });
     const [currentFolderId, setCurrentFolderId] = useState<string | null>(null);
@@ -71,7 +76,7 @@ export const FileSystemProvider: React.FC<{ children: React.ReactNode }> = ({ ch
     }, [viewMode]);
 
     useEffect(() => {
-        localStorage.setItem('virtual-fs-nodes-v2', JSON.stringify(nodes));
+        localStorage.setItem('virtual-fs-nodes-v3', JSON.stringify(nodes));
     }, [nodes]);
 
     const createFolder = (name: string) => {
@@ -166,6 +171,13 @@ export const FileSystemProvider: React.FC<{ children: React.ReactNode }> = ({ ch
         return path;
     };
 
+    const resetFileSystem = () => {
+        if (confirm('Are you sure you want to reset the file system? This will revert all changes to the original CSV data.')) {
+            localStorage.removeItem('virtual-fs-nodes-v3');
+            window.location.reload();
+        }
+    };
+
     return (
         <FileSystemContext.Provider
             value={{
@@ -183,6 +195,7 @@ export const FileSystemProvider: React.FC<{ children: React.ReactNode }> = ({ ch
                 setSelectedNodeId,
                 viewMode,
                 setViewMode,
+                resetFileSystem
             }}
         >
             {children}

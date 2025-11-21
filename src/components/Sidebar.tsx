@@ -1,12 +1,12 @@
 import React from 'react';
 import { useFileSystem } from '../context/FileSystemContext';
-import { Folder, HardDrive, Home, Info } from 'lucide-react';
+import { Folder, HardDrive, Home, Info, RotateCcw } from 'lucide-react';
 import InfoModal from './InfoModal';
 import infoContent from '../assets/info.md?raw';
 
 
 const Sidebar: React.FC = () => {
-    const { nodes, setCurrentFolderId, currentFolderId, moveNode } = useFileSystem();
+    const { nodes, setCurrentFolderId, currentFolderId, moveNode, resetFileSystem } = useFileSystem();
 
     const folders = nodes.filter((n) => n.type === 'folder');
 
@@ -133,11 +133,29 @@ const Sidebar: React.FC = () => {
                         cursor: 'pointer',
                         borderRadius: '6px',
                         color: 'var(--text-secondary)',
-                        transition: 'all 0.2s ease'
+                        transition: 'all 0.2s ease',
+                        marginBottom: '4px'
                     }}
                 >
                     <Info size={16} style={{ marginRight: '8px' }} />
                     <span style={{ fontSize: '14px' }}>Information</span>
+                </div>
+
+                <div
+                    className="sidebar-item"
+                    onClick={resetFileSystem}
+                    style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        padding: '8px 12px',
+                        cursor: 'pointer',
+                        borderRadius: '6px',
+                        color: 'var(--text-secondary)',
+                        transition: 'all 0.2s ease'
+                    }}
+                >
+                    <RotateCcw size={16} style={{ marginRight: '8px' }} />
+                    <span style={{ fontSize: '14px' }}>Reset FS</span>
                 </div>
             </div>
 

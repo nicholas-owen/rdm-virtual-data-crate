@@ -1,12 +1,110 @@
 import React, { useState } from 'react';
 import type { FileSystemNode } from '../types/filesystem';
-import { File, Folder, MoreVertical, Trash2, Edit2, Copy } from 'lucide-react';
+import {
+    File,
+    Folder,
+    MoreVertical,
+    Trash2,
+    Edit2,
+    Copy,
+    FileText,
+    Image,
+    Code,
+    FileSpreadsheet,
+    Music,
+    Video,
+    Presentation
+} from 'lucide-react';
 import { useFileSystem } from '../context/FileSystemContext';
 
 interface FileItemProps {
     node: FileSystemNode;
     viewMode?: 'grid' | 'list';
 }
+
+const getFileIcon = (filename: string, size: number) => {
+    const extension = filename.split('.').pop()?.toLowerCase();
+
+    switch (extension) {
+        // PDF
+        case 'pdf':
+            return <FileText size={size} color="#ef4444" />; // Red
+
+        // Word
+        case 'doc':
+        case 'docx':
+            return <FileText size={size} color="#3b82f6" />; // Blue
+
+        // Text
+        case 'rtf':
+        case 'txt':
+        case 'md':
+            return <FileText size={size} color="#94a3b8" />; // Slate/Gray
+
+        // Excel / Spreadsheet
+        case 'csv':
+        case 'xlsx':
+        case 'xls':
+            return <FileSpreadsheet size={size} color="#10b981" />; // Green
+
+        // PowerPoint
+        case 'ppt':
+        case 'pptx':
+            return <Presentation size={size} color="#f97316" />; // Orange
+
+        // Images
+        case 'jpg':
+        case 'jpeg':
+        case 'png':
+        case 'gif':
+        case 'svg':
+        case 'bmp':
+        case 'webp':
+            return <Image size={size} color="#8b5cf6" />; // Purple
+
+        // Web
+        case 'html':
+            return <Code size={size} color="#e34f26" />; // HTML Orange
+        case 'css':
+            return <Code size={size} color="#264de4" />; // CSS Blue
+        case 'js':
+        case 'jsx':
+            return <Code size={size} color="#f7df1e" />; // JS Yellow
+        case 'ts':
+        case 'tsx':
+            return <Code size={size} color="#3178c6" />; // TS Blue
+        case 'json':
+        case 'xml':
+            return <Code size={size} color="#eab308" />; // Generic Code Yellow
+
+        // Programming Languages
+        case 'py':
+            return <Code size={size} color="#3776ab" />; // Python Blue
+        case 'java':
+            return <Code size={size} color="#007396" />; // Java Red/Blue
+        case 'c':
+        case 'cpp':
+            return <Code size={size} color="#00599c" />; // C++ Blue
+        case 'cs':
+            return <Code size={size} color="#68217a" />; // C# Purple
+
+        // Audio
+        case 'mp3':
+        case 'wav':
+        case 'ogg':
+            return <Music size={size} color="#06b6d4" />; // Cyan
+
+        // Video
+        case 'mp4':
+        case 'mov':
+        case 'avi':
+        case 'mkv':
+            return <Video size={size} color="#ec4899" />; // Pink
+
+        default:
+            return <File size={size} color="var(--text-secondary)" />;
+    }
+};
 
 const FileItem: React.FC<FileItemProps> = ({ node, viewMode = 'grid' }) => {
     const { setCurrentFolderId, deleteNode, renameNode, copyNode, moveNode, selectedNodeId, setSelectedNodeId } = useFileSystem();
@@ -97,7 +195,7 @@ const FileItem: React.FC<FileItemProps> = ({ node, viewMode = 'grid' }) => {
                 }}
             >
                 <div style={{ marginRight: '12px', color: node.type === 'folder' ? 'var(--folder-color)' : 'var(--text-secondary)' }}>
-                    {node.type === 'folder' ? <Folder size={20} fill="currentColor" /> : <File size={20} />}
+                    {node.type === 'folder' ? <Folder size={20} fill="currentColor" /> : getFileIcon(node.name, 20)}
                 </div>
 
                 <div style={{ flex: 1, display: 'flex', alignItems: 'center' }}>
@@ -206,7 +304,7 @@ const FileItem: React.FC<FileItemProps> = ({ node, viewMode = 'grid' }) => {
                     color: node.type === 'folder' ? 'var(--folder-color)' : 'var(--text-secondary)'
                 }}
             >
-                {node.type === 'folder' ? <Folder size={48} fill="currentColor" /> : <File size={48} />}
+                {node.type === 'folder' ? <Folder size={48} fill="currentColor" /> : getFileIcon(node.name, 48)}
             </div>
 
             {isEditing ? (
