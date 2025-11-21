@@ -1,6 +1,8 @@
 import React from 'react';
 import { useFileSystem } from '../context/FileSystemContext';
-import { Folder, HardDrive, Home } from 'lucide-react';
+import { Folder, HardDrive, Home, Info } from 'lucide-react';
+import InfoModal from './InfoModal';
+import infoContent from '../assets/info.md?raw';
 
 
 const Sidebar: React.FC = () => {
@@ -67,6 +69,8 @@ const Sidebar: React.FC = () => {
         );
     };
 
+    const [isInfoOpen, setIsInfoOpen] = React.useState(false);
+
     return (
         <div style={{
             width: '250px',
@@ -111,6 +115,38 @@ const Sidebar: React.FC = () => {
                 </div>
                 {renderTree(null)}
             </div>
+
+            <div style={{
+                marginTop: 'auto',
+                paddingTop: '16px',
+                borderTop: '1px solid var(--border-color)',
+                paddingLeft: '12px',
+                paddingRight: '12px'
+            }}>
+                <div
+                    className="sidebar-item"
+                    onClick={() => setIsInfoOpen(true)}
+                    style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        padding: '8px 12px',
+                        cursor: 'pointer',
+                        borderRadius: '6px',
+                        color: 'var(--text-secondary)',
+                        transition: 'all 0.2s ease'
+                    }}
+                >
+                    <Info size={16} style={{ marginRight: '8px' }} />
+                    <span style={{ fontSize: '14px' }}>Information</span>
+                </div>
+            </div>
+
+            <InfoModal
+                isOpen={isInfoOpen}
+                onClose={() => setIsInfoOpen(false)}
+                content={infoContent}
+            />
+
             <style>{`
         .sidebar-item:hover {
           background-color: var(--item-hover) !important;
