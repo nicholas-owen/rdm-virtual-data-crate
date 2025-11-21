@@ -7,29 +7,56 @@ const FileSystemContext = createContext<FileSystemContextType | undefined>(undef
 import csvData from '../assets/filenames_org.csv?raw';
 
 const parseCSV = (csv: string): FileSystemNode[] => {
-    return csv.split('\n')
+    const nodes: FileSystemNode[] = [];
+    const existingPaths = new Map<string, string>(); // path -> id
+
+    const lines = csv.split('\n')
         .map(line => line.trim())
-        .filter(line => line.length > 0)
-        .map(line => {
-            const [typeCode, name] = line.split(',').map(s => s.trim());
-            if (!typeCode || !name) return null;
-            return {
+        .filter(line => line.length > 0);
+
+    lines.forEach(line => {
+        // Remove ~/ prefix if present
+        const cleanLine = line.startsWith('~/') ? line.substring(2) : line;
+        const parts = cleanLine.split('/');
+
+        let currentParentId: string | null = null;
+        let currentPath = '';
+
+        parts.forEach((part, index) => {
+            if (!part) return;
+
+            const isLast = index === parts.length - 1;
+            currentPath = currentPath ? `${currentPath}/${part}` : part;
+
+            // Check if we already created this node
+            if (existingPaths.has(currentPath)) {
+                currentParentId = existingPaths.get(currentPath)!;
+                return;
+            }
+
+            const newNode: FileSystemNode = {
                 id: uuidv4(),
-                parentId: null,
-                name,
-                type: typeCode === '2' ? 'folder' : 'file',
+                parentId: currentParentId,
+                name: part,
+                type: isLast ? 'file' : 'folder',
                 createdAt: Date.now(),
-                content: typeCode === '1' ? '' : undefined
-            } as FileSystemNode;
-        })
-        .filter((node): node is FileSystemNode => node !== null);
+                content: isLast ? '' : undefined
+            };
+
+            nodes.push(newNode);
+            existingPaths.set(currentPath, newNode.id);
+            currentParentId = newNode.id;
+        });
+    });
+
+    return nodes;
 };
 
 const initialNodes: FileSystemNode[] = parseCSV(csvData);
 
 export const FileSystemProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     const [nodes, setNodes] = useState<FileSystemNode[]>(() => {
-        const saved = localStorage.getItem('virtual-fs-nodes');
+        const saved = localStorage.getItem('virtual-fs-nodes-v2');
         return saved ? JSON.parse(saved) : initialNodes;
     });
     const [currentFolderId, setCurrentFolderId] = useState<string | null>(null);
@@ -44,7 +71,7 @@ export const FileSystemProvider: React.FC<{ children: React.ReactNode }> = ({ ch
     }, [viewMode]);
 
     useEffect(() => {
-        localStorage.setItem('virtual-fs-nodes', JSON.stringify(nodes));
+        localStorage.setItem('virtual-fs-nodes-v2', JSON.stringify(nodes));
     }, [nodes]);
 
     const createFolder = (name: string) => {
