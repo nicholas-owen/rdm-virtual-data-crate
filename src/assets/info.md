@@ -17,4 +17,4 @@ This application utilises a modern, React-based approach to building file explor
 ## License
 MIT
 
-Developed by: Antigravity and Nicholas Owen D.Phil (https://github.com/nicholas-owen)
+Developed by: Antigravity and [Nicholas Owen D.Phil](https://github.com/nicholas-owen)
