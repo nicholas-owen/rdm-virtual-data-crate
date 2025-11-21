@@ -1,13 +1,20 @@
-
 import { FileSystemProvider } from './context/FileSystemContext';
-import Layout from './components/Layout';
+import Sidebar from './components/Sidebar';
+import Explorer from './components/Explorer';
 import './App.css';
+
+import { ThemeProvider } from './context/ThemeContext';
 
 function App() {
   return (
-    <FileSystemProvider>
-      <Layout />
-    </FileSystemProvider>
+    <ThemeProvider>
+      <FileSystemProvider>
+        <div className="app-container">
+          <Sidebar />
+          <Explorer />
+        </div>
+      </FileSystemProvider>
+    </ThemeProvider>
   );
 }
 

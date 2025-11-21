@@ -1,7 +1,8 @@
 import React from 'react';
 import { useFileSystem } from '../context/FileSystemContext';
-import { Folder, HardDrive, Home, Info, RotateCcw } from 'lucide-react';
+import { Folder, HardDrive, Home, Info, RotateCcw, Settings } from 'lucide-react';
 import InfoModal from './InfoModal';
+import SettingsModal from './SettingsModal';
 import infoContent from '../assets/info.md?raw';
 
 
@@ -70,6 +71,7 @@ const Sidebar: React.FC = () => {
     };
 
     const [isInfoOpen, setIsInfoOpen] = React.useState(false);
+    const [isSettingsOpen, setIsSettingsOpen] = React.useState(false);
 
     return (
         <div style={{
@@ -143,6 +145,24 @@ const Sidebar: React.FC = () => {
 
                 <div
                     className="sidebar-item"
+                    onClick={() => setIsSettingsOpen(true)}
+                    style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        padding: '8px 12px',
+                        cursor: 'pointer',
+                        borderRadius: '6px',
+                        color: 'var(--text-secondary)',
+                        transition: 'all 0.2s ease',
+                        marginBottom: '4px'
+                    }}
+                >
+                    <Settings size={16} style={{ marginRight: '8px' }} />
+                    <span style={{ fontSize: '14px' }}>Settings</span>
+                </div>
+
+                <div
+                    className="sidebar-item"
                     onClick={resetFileSystem}
                     style={{
                         display: 'flex',
@@ -163,6 +183,11 @@ const Sidebar: React.FC = () => {
                 isOpen={isInfoOpen}
                 onClose={() => setIsInfoOpen(false)}
                 content={infoContent}
+            />
+
+            <SettingsModal
+                isOpen={isSettingsOpen}
+                onClose={() => setIsSettingsOpen(false)}
             />
 
             <style>{`

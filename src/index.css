@@ -1,5 +1,6 @@
 /* Reset and Base Styles */
 :root {
+  /* Default (Dark) Theme */
   --bg-color: #0f172a;
   --sidebar-bg: #1e293b;
   --content-bg: #0f172a;
@@ -10,6 +11,32 @@
   --border-color: #334155;
   --item-hover: #334155;
   --folder-color: #fbbf24;
+}
+
+body.theme-light {
+  --bg-color: #ffffff;
+  --sidebar-bg: #f1f5f9;
+  --content-bg: #ffffff;
+  --text-primary: #0f172a;
+  --text-secondary: #64748b;
+  --accent-color: #2563eb;
+  --accent-hover: #1d4ed8;
+  --border-color: #e2e8f0;
+  --item-hover: #e2e8f0;
+  --folder-color: #f59e0b;
+}
+
+body.theme-modern {
+  --bg-color: #09090b;
+  --sidebar-bg: #18181b;
+  --content-bg: #09090b;
+  --text-primary: #fafafa;
+  --text-secondary: #a1a1aa;
+  --accent-color: #8b5cf6; /* Purple */
+  --accent-hover: #7c3aed;
+  --border-color: #27272a;
+  --item-hover: #27272a;
+  --folder-color: #a855f7;
 }
 
 * {
