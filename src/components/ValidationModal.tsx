@@ -10,7 +10,7 @@ interface ValidationModalProps {
 interface Issue {
     id: string;
     name: string;
-    type: 'error' | 'warning' | 'success';
+    type: 'error' | 'warning' | 'success' | 'blue-error' | 'purple-error' | 'pink-error';
     message: string;
 }
 
@@ -48,21 +48,30 @@ const ValidationModal: React.FC<ValidationModalProps> = ({ isOpen, onClose }) =>
                 issues.push({
                     id: node.id,
                     name: node.name,
-                    type: 'error',
+                    type: 'purple-error',
                     message: 'Contains special characters'
                 });
             }
 
-            // 3. Check for ISO Date (YYYY-MM-DD or YYYYMMDD)
-            // Simple regex check
-            const hasIsoDate = /\d{4}[-_]?\d{2}[-_]?\d{2}/.test(node.name);
-            if (hasIsoDate) {
-                // Bonus, but don't exceed 100 if already perfect? 
-                // Actually, let's just treat it as a "good practice" that doesn't penalize if missing, 
-                // but maybe we can't easily "bonus" without capping.
-                // Let's flip it: If it LOOKS like a date but isn't ISO, penalize? 
-                // For now, let's just track it as a positive trait if we were doing detailed scoring.
-                // Instead, let's just penalize "bad" things for the score.
+            // 3. Check for Date Format
+            // We want to enforce YYYY-MM-DD or YYYY_MM_DD
+            // First, check if it looks like it contains a date (4 digits, separators, 2 digits, etc.)
+            // This regex catches things like YYYY.MM.DD, DD-MM-YYYY, YYYY/MM/DD, etc.
+            const looksLikeDate = /\d{4}[-._/]\d{2}[-._/]\d{2}|\d{2}[-._/]\d{2}[-._/]\d{4}/.test(node.name);
+
+            if (looksLikeDate) {
+                // Now check if it matches the STRICT format: YYYY-MM-DD or YYYY_MM_DD
+                const validDate = /\d{4}-\d{2}-\d{2}|\d{4}_\d{2}_\d{2}/.test(node.name);
+
+                if (!validDate) {
+                    itemScore -= 20;
+                    issues.push({
+                        id: node.id,
+                        name: node.name,
+                        type: 'blue-error',
+                        message: 'Supporting the wrong date format (use YYYY-MM-DD or YYYY_MM_DD)'
+                    });
+                }
             }
 
             // 4. Check for extension (files only)
@@ -71,7 +80,7 @@ const ValidationModal: React.FC<ValidationModalProps> = ({ isOpen, onClose }) =>
                 issues.push({
                     id: node.id,
                     name: node.name,
-                    type: 'error',
+                    type: 'pink-error',
                     message: 'Missing file extension'
                 });
             }
@@ -104,9 +113,15 @@ const ValidationModal: React.FC<ValidationModalProps> = ({ isOpen, onClose }) =>
 
         // Sort issues: Errors first, then warnings
         issues.sort((a, b) => {
-            if (a.type === b.type) return 0;
-            if (a.type === 'error') return -1;
-            return 1;
+            const getPriority = (type: string) => {
+                if (type === 'error') return 0;
+                if (type === 'blue-error') return 1;
+                if (type === 'purple-error') return 2;
+                if (type === 'pink-error') return 3;
+                if (type === 'warning') return 4;
+                return 5;
+            };
+            return getPriority(a.type) - getPriority(b.type);
         });
 
         return { score: finalScore, issues };
@@ -194,11 +209,17 @@ const ValidationModal: React.FC<ValidationModalProps> = ({ isOpen, onClose }) =>
                                     padding: '12px',
                                     backgroundColor: 'var(--bg-color)',
                                     borderRadius: '6px',
-                                    borderLeft: `4px solid ${issue.type === 'error' ? '#ef4444' : '#f59e0b'}`
+                                    borderLeft: `4px solid ${issue.type === 'error' ? '#ef4444' : issue.type === 'blue-error' ? '#3b82f6' : issue.type === 'purple-error' ? '#8b5cf6' : issue.type === 'pink-error' ? '#ec4899' : '#f59e0b'}`
                                 }}>
                                     {issue.type === 'error' ?
                                         <XCircle size={20} color="#ef4444" style={{ marginRight: '12px', marginTop: '2px' }} /> :
-                                        <AlertTriangle size={20} color="#f59e0b" style={{ marginRight: '12px', marginTop: '2px' }} />
+                                        issue.type === 'blue-error' ?
+                                            <XCircle size={20} color="#3b82f6" style={{ marginRight: '12px', marginTop: '2px' }} /> :
+                                            issue.type === 'purple-error' ?
+                                                <XCircle size={20} color="#8b5cf6" style={{ marginRight: '12px', marginTop: '2px' }} /> :
+                                                issue.type === 'pink-error' ?
+                                                    <XCircle size={20} color="#ec4899" style={{ marginRight: '12px', marginTop: '2px' }} /> :
+                                                    <AlertTriangle size={20} color="#f59e0b" style={{ marginRight: '12px', marginTop: '2px' }} />
                                     }
                                     <div>
                                         <div style={{ fontWeight: '600', marginBottom: '4px' }}>{issue.name}</div>
