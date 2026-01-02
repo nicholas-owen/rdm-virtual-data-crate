@@ -71,7 +71,7 @@ const InfoModal: React.FC<InfoModalProps> = ({ isOpen, onClose, content }) => {
                     .markdown-content pre { background-color: var(--item-hover); padding: 12px; borderRadius: 6px; overflow-x: auto; margin-bottom: 1em; color: var(--text-primary); }
                     .markdown-content a { color: var(--accent-color); text-decoration: none; }
                     .markdown-content a:hover { text-decoration: underline; }
-                    .markdown-content img[alt="UCL Logo"] { width: 50px; }
+                    .markdown-content img[alt="UCL Logo"] { width: 150px; }
                 `}</style>
             </div>
         </div>
