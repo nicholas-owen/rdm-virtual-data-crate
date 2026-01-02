@@ -21,4 +21,4 @@ Developed by Nicholas Owen D.Phil (https://github.com/nicholas-owen)
 
 [![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC_BY--SA_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0//?style=for-the-badge)
 
-<img src="https://github.com/nicholas-owen/rdm-virtual-data-crate/blob/main/src/assets/brand-logo.png?raw=true" alt="UCL Logo" width="50"/>
+![UCL Logo]({{BRAND_LOGO}})

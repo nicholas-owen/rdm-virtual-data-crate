@@ -4,7 +4,10 @@ import { Folder, HardDrive, Home, Info, RotateCcw, Settings, ClipboardCheck } fr
 import InfoModal from './InfoModal';
 import SettingsModal from './SettingsModal';
 import ValidationModal from './ValidationModal';
-import infoContent from '../assets/info.md?raw';
+import infoContentRaw from '../assets/info.md?raw';
+import brandLogo from '../assets/brand-logo.png';
+
+const infoContent = infoContentRaw.replace('{{BRAND_LOGO}}', brandLogo);
 
 
 const Sidebar: React.FC = () => {
