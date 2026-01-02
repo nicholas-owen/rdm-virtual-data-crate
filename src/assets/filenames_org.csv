@@ -1,5 +1,4 @@
 ~/Project_CellAtlas_2026/ReadMe!.TXT
-~/Project_CellAtlas_2026/admin
 ~/Project_CellAtlas_2026/admin/Grant_Proposal_DRAFT_v4!.docx
 ~/Project_CellAtlas_2026/admin/budget_2026_FINAL!.xlsx
 ~/Project_CellAtlas_2026/admin/Budget_2026_final_v2.XLSX
@@ -7,7 +6,6 @@
 ~/Project_CellAtlas_2026/admin/meeting_notes_jan.txt
 ~/Project_CellAtlas_2026/admin/Meeting_Notes_Feb.txt
 ~/Project_CellAtlas_2026/admin/notes_march_CANCELLED!.txt
-~/Project_CellAtlas_2026/LITERATURE!
 ~/Project_CellAtlas_2026/LITERATURE!/Smith_et_al_2020.pdf
 ~/Project_CellAtlas_2026/LITERATURE!/nature_biotech_REVIEW.pdf
 ~/Project_CellAtlas_2026/LITERATURE!/10.1038_s41586-021-03616-x.pdf
@@ -20,9 +18,6 @@
 ~/Project_CellAtlas_2026/LITERATURE!/methodology_reference_2018.pdf
 ~/Project_CellAtlas_2026/LITERATURE!/Wang_2022_SuppData.pdf
 ~/Project_CellAtlas_2026/LITERATURE!/supplementary_table_1.xlsx
-~/Project_CellAtlas_2026/raw_DATA
-~/Project_CellAtlas_2026/raw_DATA/microscopy
-~/Project_CellAtlas_2026/raw_DATA/microscopy/Widefield_Room2!
 ~/Project_CellAtlas_2026/raw_DATA/microscopy/Widefield_Room2!/Exp1_Ctrl_DAPI.tif
 ~/Project_CellAtlas_2026/raw_DATA/microscopy/Widefield_Room2!/Exp1_Ctrl_GFP.TIF
 ~/Project_CellAtlas_2026/raw_DATA/microscopy/Widefield_Room2!/Exp1_Ctrl_RFP.tif
@@ -32,7 +27,6 @@
 ~/Project_CellAtlas_2026/raw_DATA/microscopy/Widefield_Room2!/Exp1_DrugB_DAPI.TIFF
 ~/Project_CellAtlas_2026/raw_DATA/microscopy/Widefield_Room2!/Exp1_DrugB_GFP.TIFF
 ~/Project_CellAtlas_2026/raw_DATA/microscopy/Widefield_Room2!/Exp1_DrugB_RFP.TIFF
-~/Project_CellAtlas_2026/raw_DATA/microscopy/CONFOCAL
 ~/Project_CellAtlas_2026/raw_DATA/microscopy/CONFOCAL/WT_stack_01.czi
 ~/Project_CellAtlas_2026/raw_DATA/microscopy/CONFOCAL/wt_Stack_02.czi
 ~/Project_CellAtlas_2026/raw_DATA/microscopy/CONFOCAL/WT_Stack_03_BLUR.czi
@@ -40,7 +34,6 @@
 ~/Project_CellAtlas_2026/raw_DATA/microscopy/CONFOCAL/ko_stack_02.czi
 ~/Project_CellAtlas_2026/raw_DATA/microscopy/CONFOCAL/test_IMAGE!.lsm
 ~/Project_CellAtlas_2026/raw_DATA/microscopy/CONFOCAL/Z-stack_FAILED!.lsm
-~/Project_CellAtlas_2026/raw_DATA/sequencing
 ~/Project_CellAtlas_2026/raw_DATA/sequencing/SampleSheet_FINAL!.csv
 ~/Project_CellAtlas_2026/raw_DATA/sequencing/samplesheet_OLD.csv
 ~/Project_CellAtlas_2026/raw_DATA/sequencing/Sample_01_S1_L001_R1_001.fastq.gz
@@ -56,8 +49,6 @@
 ~/Project_CellAtlas_2026/raw_DATA/sequencing/Undetermined_S0_L001_R1_001.fq.gz
 ~/Project_CellAtlas_2026/raw_DATA/sequencing/Undetermined_S0_L001_R2_001.fq.gz
 ~/Project_CellAtlas_2026/raw_DATA/sequencing/MD5_checksums.txt
-~/Project_CellAtlas_2026/ANALYSIS
-~/Project_CellAtlas_2026/ANALYSIS/Code
 ~/Project_CellAtlas_2026/ANALYSIS/Code/01_trimming!.sh
 ~/Project_CellAtlas_2026/ANALYSIS/Code/02_ALIGNMENT.py
 ~/Project_CellAtlas_2026/ANALYSIS/Code/03_count_matrix.R
@@ -66,7 +57,6 @@
 ~/Project_CellAtlas_2026/ANALYSIS/Code/test_script_DONT_USE.py
 ~/Project_CellAtlas_2026/ANALYSIS/Code/requirements.txt
 ~/Project_CellAtlas_2026/ANALYSIS/Code/plotting_helpers.R
-~/Project_CellAtlas_2026/ANALYSIS/results!
 ~/Project_CellAtlas_2026/ANALYSIS/results!/S1_aligned.bam
 ~/Project_CellAtlas_2026/ANALYSIS/results!/S1_aligned.bam.bai
 ~/Project_CellAtlas_2026/ANALYSIS/results!/S2_Aligned.BAM
@@ -82,12 +72,9 @@
 ~/Project_CellAtlas_2026/ANALYSIS/results!/heatmap_Top50.pdf
 ~/Project_CellAtlas_2026/ANALYSIS/results!/RPlots.pdf
 ~/Project_CellAtlas_2026/ANALYSIS/results!/SessionInfo.txt
-~/Project_CellAtlas_2026/SCRATCH
-~/Project_CellAtlas_2026/SCRATCH/temp_data
 ~/Project_CellAtlas_2026/SCRATCH/temp_data/delete_me.txt
 ~/Project_CellAtlas_2026/SCRATCH/test_output.txt
 ~/Project_CellAtlas_2026/SCRATCH/DEBUG.log
-~/Project_CellAtlas_2026/Shared_Folder
 ~/Project_CellAtlas_2026/Shared_Folder/To_Send_To_Collaborator
 ~/Project_CellAtlas_2026/Shared_Folder/To_Send_To_Collaborator/Data_subset.zip
 ~/Project_CellAtlas_2026/Shared_Folder/from_collaborator.zip
