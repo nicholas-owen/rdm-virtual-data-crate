@@ -1,6 +1,6 @@
 # RDM Virtual Data Crate
 
-**Version:** 0.1.0.20251126
+**Version:** 0.2.20260102
 
 ## Overview
 The RDM Virtual Data Crate is a simulated file system environment designed for research data management training and demonstration.
@@ -15,6 +15,10 @@ The RDM Virtual Data Crate is a simulated file system environment designed for r
 This application utilises a modern, React-based approach to building file explorer interfaces on the web for the purpose of demonstrating research data management concepts.
 
 ## License
-MIT
+CC BY-SA 4.0
 
-Developed by: Antigravity and [Nicholas Owen D.Phil](https://github.com/nicholas-owen)
+Developed by Nicholas Owen D.Phil (https://github.com/nicholas-owen)
+
+[![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC_BY--SA_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0//?style=for-the-badge)
+
+[![Branding](https://github.com/nicholas-owen/rdm-virtual-data-crate/blob/main/src/assets/brand-logo.png?raw=true)](https://github.com/nicholas-owen/rdm-virtual-data-crate/blob/main/src/assets/brand-logo.png?raw=true)
