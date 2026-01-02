@@ -17,7 +17,7 @@ This application utilises a modern, React-based approach to building file explor
 ## License
 CC BY-SA 4.0
 
-Developed by Nicholas Owen D.Phil (https://github.com/nicholas-owen)
+Developed by [Nicholas Owen D.Phil](https://github.com/nicholas-owen)
 
 [![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC_BY--SA_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0//?style=for-the-badge)
 
