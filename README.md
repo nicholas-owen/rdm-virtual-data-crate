@@ -4,6 +4,8 @@
 [![Status: Active](https://img.shields.io/badge/Status-Active-success.svg?logo=github/?style=for-the-badge)]()
 [![UCL ARC](https://img.shields.io/badge/UCL-Advanced_Research_Computing-darkblue)](https://www.ucl.ac.uk/advanced-research-computing/?style=for-the-badge)
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18140481.svg)](https://doi.org/10.5281/zenodo.18140481)
+
 **A browser-based sandbox for teaching FAIR data management, file naming conventions, and directory organization.**
 
 ## 📖 Overview
