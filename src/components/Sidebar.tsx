@@ -11,7 +11,7 @@ const infoContent = infoContentRaw.replace('{{BRAND_LOGO}}', brandLogo);
 
 
 const Sidebar: React.FC = () => {
-    const { nodes, setCurrentFolderId, currentFolderId, moveNode, resetFileSystem } = useFileSystem();
+    const { nodes, setCurrentFolderId, currentFolderId, moveNode, resetFileSystem, currentScenario, scenarios, scenarioTitles, setScenario } = useFileSystem();
 
     const folders = nodes.filter((n) => n.type === 'folder');
 
@@ -88,10 +88,37 @@ const Sidebar: React.FC = () => {
             padding: '16px'
         }}>
             <div style={{ marginBottom: '24px', padding: '0 12px' }}>
-                <h2 style={{ fontSize: '18px', fontWeight: '600', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <h2 style={{ fontSize: '18px', fontWeight: '600', display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
                     <HardDrive size={20} color="var(--accent-color)" />
                     RDM Virtual Data Crate
                 </h2>
+
+                {scenarios.length > 0 && (
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                        <label htmlFor="scenario-select" style={{ fontSize: '12px', fontWeight: '600', color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                            Data Scenario
+                        </label>
+                        <select
+                            id="scenario-select"
+                            value={currentScenario || ''}
+                            onChange={(e) => setScenario(e.target.value)}
+                            style={{
+                                padding: '8px',
+                                borderRadius: '6px',
+                                border: '1px solid var(--border-color)',
+                                backgroundColor: 'var(--bg-color)',
+                                color: 'var(--text-primary)',
+                                fontSize: '14px',
+                                outline: 'none',
+                                cursor: 'pointer'
+                            }}
+                        >
+                            {scenarios.map(sc => (
+                                <option key={sc} value={sc}>{scenarioTitles[sc] || sc}</option>
+                            ))}
+                        </select>
+                    </div>
+                )}
             </div>
 
             <div

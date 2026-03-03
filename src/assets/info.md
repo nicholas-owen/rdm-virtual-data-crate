@@ -1,6 +1,6 @@
 # RDM Virtual Data Crate
 
-**Version:** 0.2.20260102
+**Version:** 0.3.20260303
 
 ## Overview
 The RDM Virtual Data Crate is a simulated file system environment designed for research data management training and demonstration.
@@ -10,6 +10,7 @@ The RDM Virtual Data Crate is a simulated file system environment designed for r
 - **File Operations**: Create, delete, rename, and move files and folders.
 - **Drag and Drop**: Intuitive drag-and-drop interface for organizing content.
 - **Persistent Storage**: Your changes are saved locally in your browser.
+- **Multiple Scenarios**: Switch between different simulated datasets and file structures from the UI.
 
 ## About
 This application utilises a modern, React-based approach to building file explorer interfaces on the web for the purpose of demonstrating research data management concepts.

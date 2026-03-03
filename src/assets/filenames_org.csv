@@ -1,3 +1,4 @@
+>SCENARIO-01 Standard Project Data
 ~/Project_CellAtlas_2026/ReadMe!.TXT
 ~/Project_CellAtlas_2026/admin/Grant_Proposal_DRAFT_v4!.docx
 ~/Project_CellAtlas_2026/admin/budget_2026_FINAL!.xlsx
@@ -79,3 +80,11 @@
 ~/Project_CellAtlas_2026/Shared_Folder/To_Send_To_Collaborator
 ~/Project_CellAtlas_2026/Shared_Folder/To_Send_To_Collaborator/Data_subset.zip
 ~/Project_CellAtlas_2026/Shared_Folder/from_collaborator.zip
+
+>SCENARIO-02 A Very Long Scenario Title That Should Be Truncated In The UI
+~/Project_BetaTest/Readme.md
+~/Project_BetaTest/Data/Sample1.csv
+~/Project_BetaTest/Data/Sample2.csv
+~/Project_BetaTest/Code/analysis.py
+~/Project_BetaTest/Code/utils.py
+~/Project_BetaTest/Results/plot.png

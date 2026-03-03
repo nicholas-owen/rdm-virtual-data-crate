@@ -24,4 +24,8 @@ export interface FileSystemContextType {
   setSelectedNodeId: (id: string | null) => void;
   viewMode: 'grid' | 'list';
   setViewMode: (mode: 'grid' | 'list') => void;
+  currentScenario: string | null;
+  scenarios: string[];
+  scenarioTitles: Record<string, string>;
+  setScenario: (scenario: string) => void;
 }
